@@ -127,7 +127,7 @@ a, a:hover {
 
 // Media Queries
 @media (min-width: 678px) {
-  .cart {
+  .cart,.login ,.register {
     width: 75%;
   }
 }
