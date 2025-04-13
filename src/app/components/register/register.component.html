@@ -1,0 +1,136 @@
+<div class="register-container w-75 mx-auto my-3">
+  <h3>Register Now :</h3>
+  <form [formGroup]="rgisterForm" (ngSubmit)="submitForm()">
+    <!-- name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">name :</label>
+      <input [ngClass]="{
+        'is-valid':!rgisterForm.get('name')?.errors&&rgisterForm.get('name')?.dirty,
+        'is-invalid':rgisterForm.get('name')?.errors&&rgisterForm.get('name')?.dirty,
+        }" formControlName="name" type="text" class="form-control" id="name">
+
+      @if (rgisterForm.get('name')?.errors &&rgisterForm.get('name')?.touched)
+      {
+
+      <div class="alert alert-danger p-0 ">
+        @if (rgisterForm.get('name')?.getError('required')) {
+        <p class="p-1 m-0">name is required</p>
+
+        }
+        @if (rgisterForm.get('name')?.getError('minlength')) {
+          <p class="p-1 m-0">Name Should be more than or equal 3 chars</p>
+
+        }
+        @if (rgisterForm.get('name')?.getError('maxlength')) {
+          <p class="p-1 m-0">Name Should be less than or equal 20 chars</p>
+
+        }
+
+
+      </div>
+      }
+    </div>
+
+    <!-- email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">email :</label>
+      <input [ngClass]="{
+        'is-valid':!rgisterForm.get('email')?.errors&&rgisterForm.get('email')?.dirty,
+        'is-invalid':rgisterForm.get('email')?.errors&&rgisterForm.get('email')?.dirty,
+        }" formControlName="email" type="email" class="form-control" id="email">
+
+      @if (rgisterForm.get('email')?.errors &&rgisterForm.get('email')?.touched)
+      {
+
+      <div class="alert alert-danger p-0 ">
+        @if (rgisterForm.get('email')?.getError('required')) {
+        <p class="p-1 m-0">email is required</p>
+
+        }
+        @if (rgisterForm.get('email')?.getError('email')) {
+          <p class="p-1 m-0">Enter Valid Email</p>
+
+        }
+
+      </div>
+      }
+
+    </div>
+
+
+    <!-- password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">password :</label>
+      <input  formControlName="password" type="password" class="form-control" id="password" [ngClass]="{
+        'is-valid':!rgisterForm.get('password')?.errors&&rgisterForm.get('password')?.dirty,
+        'is-invalid':rgisterForm.get('password')?.errors&&rgisterForm.get('password')?.dirty,
+        }">
+      @if (rgisterForm.get('password')?.errors &&rgisterForm.get('password')?.touched)
+      {
+
+      <div class="alert alert-danger p-0 ">
+        @if (rgisterForm.get('password')?.getError('required')) {
+        <p class="p-1 m-0">password is required</p>
+
+        }
+        @if (rgisterForm.get('password')?.getError('pattern')) {
+          <p class="p-1 m-0">must be at least 6 chars</p>
+
+        }
+
+      </div>
+      }
+
+    </div>
+    <div class="mb-3">
+      <label for="rePassword" class="form-label">rePassword :</label>
+      <input [ngClass]="{
+        'is-valid':!rgisterForm.getError('mismatch')&&rgisterForm.get('rePassword')?.dirty,
+        'is-invalid':rgisterForm.getError('mismatch')&&rgisterForm.get('rePassword')?.dirty,
+        }" formControlName="rePassword" type="password" class="form-control" id="rePassword">
+      @if (rgisterForm.getError('mismatch') &&rgisterForm.get('rePassword')?.touched)
+      {
+
+      <div class="alert alert-danger p-0 ">
+
+          <p class="p-1 m-0">Enter Valid rePassword</p>
+
+
+
+      </div>
+      }
+
+    </div>
+    <!-- phone -->
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">phone :</label>
+      <input [ngClass]="{
+        'is-valid':!rgisterForm.get('phone')?.errors&&rgisterForm.get('phone')?.dirty,
+        'is-invalid':rgisterForm.get('phone')?.errors&&rgisterForm.get('phone')?.dirty,
+        }" formControlName="phone" type="tel" class="form-control" id="phone">
+      @if (rgisterForm.get('phone')?.errors &&rgisterForm.get('phone')?.touched)
+      {
+
+      <div class="alert alert-danger p-0 ">
+        @if (rgisterForm.get('phone')?.getError('required')) {
+        <p class="p-1 m-0">phone is required</p>
+
+        }
+        @if (rgisterForm.get('phone')?.getError('pattern')) {
+          <p class="p-1 m-0">Enter Valid phone</p>
+
+        }
+
+    </div>
+      }
+
+    </div>
+    <button  type="submit" class="btn register-btn btn-main">Register
+      @if (isLoading()) {
+        <i class="fa-solid fa-spinner fa-spin"></i>
+      }   </button>
+
+
+  </form>
+</div>

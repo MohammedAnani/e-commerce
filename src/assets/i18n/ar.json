@@ -1,0 +1,14 @@
+{
+  "navbar":{
+    "home":"الرئيسيه",
+    "products":"المنتجات",
+    "categories":"الاقسام",
+    "brands":"العلامات التجاريه",
+    "logout":"تسجيل الخروج",
+    "lang":"ع"
+  },
+  "home":{
+    "popularCategory":"الاقسام الرئيسيه",
+    "popularProducts":"المنتجات الرئيسيه"
+  }
+}

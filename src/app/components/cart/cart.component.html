@@ -1,0 +1,58 @@
+@if (cartDetailes?.numOfCartItems !== 0) {
+  <section class="cart rounded-4  p-4 my-2 shadow mx-auto ">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="h2 text-center">Shop Cart</h1>
+      <button
+        [swal]="['Oops!', 'Are You Sure Delete All Products :/', 'warning']"
+        (confirm)="saveFile()"
+        class="btn btn-outline-danger btn-sm " [class.me-auto]="_TranslateService.currentLang == 'ar'"
+        [class.ms-auto]="_TranslateService.currentLang == 'en'"
+      >
+        Clear Cart
+      </button>
+    </div>
+
+    <p class="text-main">
+      Total Cart Price: {{ cartDetailes?.data?.totalCartPrice | currency: 'GBP' }}
+    </p>
+
+    @if (x == false) {
+      <h3 class="mx-auto text-success fw-bold text-center">Cart Is Empty</h3>
+    }
+
+    @for (item of cartDetailes?.data?.products; track item.product.id) {
+      <div class="row mb-1 border-bottom p-1">
+        <div class="col-md-1">
+          <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title" />
+        </div>
+
+        <div class="col-md-11 d-flex align-items-center justify-content-between my-2">
+          <div>
+            <h3 class="h5 ">{{ item.product.title }}</h3>
+            <p class="text-main m-0">Price: {{ item.price }}</p>
+            <span class="text-danger">
+              <i (click)="deleteItem(item.product.id)" class="fa-solid fa-trash cr fs-5"></i>
+            </span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-main cr" (click)="updateCart(item.product.id, item.count + 1)">
+              <i class="fa-solid fa-circle-plus fa-2xl"></i>
+            </span>
+
+            <span>{{ item.count }}</span>
+
+            <span class="text-main cr" (click)="updateCart(item.product.id, item.count - 1)">
+              <i class="fa-solid fa-circle-minus fa-2xl"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    }
+
+    <button class="btn btn-main" [routerLink]="['/order', cartDetailes?.data?._id]">Order</button>
+  </section>
+}
+@else {
+  <h3 class="mx-auto text-success fw-bold text-center">Cart Is Empty</h3>
+}

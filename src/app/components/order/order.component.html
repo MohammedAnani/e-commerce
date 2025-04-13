@@ -1,0 +1,75 @@
+<div class="register-container w-75 mx-auto my-3 p-3 rounded-2">
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+
+    <!-- details -->
+    <div class="mb-3">
+      <label for="details" class="form-label">Details:</label>
+      <input type="text" id="details" formControlName="details" class="form-control"
+        [ngClass]="{
+          'is-valid': !userForm.get('details')?.errors && userForm.get('details')?.dirty,
+          'is-invalid': userForm.get('details')?.errors && userForm.get('details')?.dirty
+        }"
+      />
+      @if (userForm.get('details')?.errors && userForm.get('details')?.touched) {
+        <div class="alert alert-danger p-0">
+          @if (userForm.get('details')?.getError('required')) {
+            <p class="p-1 m-0">Details are required</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- phone -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone:</label>
+      <input type="text" id="phone" formControlName="phone" class="form-control"
+        [ngClass]="{
+          'is-valid': !userForm.get('phone')?.errors && userForm.get('phone')?.dirty,
+          'is-invalid': userForm.get('phone')?.errors && userForm.get('phone')?.dirty
+        }"
+      />
+      @if (userForm.get('phone')?.errors && userForm.get('phone')?.touched) {
+        <div class="alert alert-danger p-0">
+          @if (userForm.get('phone')?.getError('required')) {
+            <p class="p-1 m-0">Phone is required</p>
+          }
+          @if (userForm.get('phone')?.getError('pattern')) {
+            <p class="p-1 m-0">Enter a valid Egyptian phone number</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- city -->
+    <div class="mb-3">
+      <label for="city" class="form-label">City:</label>
+      <input type="text" id="city" formControlName="city" class="form-control"
+        [ngClass]="{
+          'is-valid': !userForm.get('city')?.errors && userForm.get('city')?.dirty,
+          'is-invalid': userForm.get('city')?.errors && userForm.get('city')?.dirty
+        }"
+      />
+      @if (userForm.get('city')?.errors && userForm.get('city')?.touched) {
+        <div class="alert alert-danger p-0">
+          @if (userForm.get('city')?.getError('required')) {
+            <p class="p-1 m-0">City is required</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- submit -->
+    <div class="d-flex justify-content-between align-items-center">
+      <button type="submit" class="btn register-btn btn-main" [disabled]="userForm.invalid">
+        CheckOut
+
+      </button>
+    </div>
+
+    @if (msgError()) {
+      <p class="alert alert-danger p-1 text-center"> {{ msgError() }} </p>
+    }
+
+  </form>
+
+</div>

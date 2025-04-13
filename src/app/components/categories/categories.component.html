@@ -1,0 +1,23 @@
+<div class="container-fluid my-2">
+  <h2 class="my-2">Popular Categories:</h2>
+
+  <div class="row g-4" style="align-items: stretch;">
+    @for (item of allCategories(); track $index) {
+      <div class="col-6 col-md-3 col-lg-2  ">
+
+        <div class="brand-card product  p-2 h-100 d-flex flex-column">
+          <!-- Brand Image -->
+          <img [src]="item.image" class="brand-image w-100" alt="Canon Brand Image" height="250px">
+          <div class="card-body text-center w-100">
+            <!-- Brand Name -->
+            <h5 class="brand-title">{{item.name}}</h5>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+  </div>
+</div>

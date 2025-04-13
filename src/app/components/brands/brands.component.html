@@ -1,0 +1,23 @@
+<div class="container-fluid my-2">
+  <h2 class="my-2">Popular Brands:</h2>
+
+  <div class="row g-4">
+    @for (item of allBrands(); track $index) {
+      <div class="col-6 col-md-2  ">
+
+        <div class="brand-card product  p-2">
+          <!-- Brand Image -->
+          <img [src]="item.image" class="brand-image w-100" alt="Canon Brand Image">
+          <div class="card-body text-center">
+            <!-- Brand Name -->
+            <h5 class="brand-title">{{item.name}}</h5>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+  </div>
+</div>
