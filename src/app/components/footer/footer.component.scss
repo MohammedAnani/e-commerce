@@ -2,3 +2,27 @@ footer .x{
   width: 92%;
   margin: auto;
 }
+@media (max-width: 576px) {
+  .pay-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pay-details img {
+    margin-bottom: 10px;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-control {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-main {
+    width: 100%;
+  }
+}
